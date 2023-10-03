@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('includes/head', { title: '전체 게시글' }) %>
+  <link rel="stylesheet" href="/styles/posts.css">
+</head>
+
+
+  <body>
+    <%- include('includes/header') %>
+    <main id="all-posts">
+      <h1>전체 게시글</h1>
+      <form action="post-detail" method="POST"></form>
+        <% if (!posts || posts.length === 0) { %>
+          <p>게시글이 없습니다. 게시글을 작성해주세요.</p>
+          <a class="btn" href="/new-post">작성</a>
+        <% } %>
+        <ul id = "posts-list">
+          <% for (const post of posts) { %>
+            <li>
+              <!-- <p class = "post-item"><a href="/post-detail"><%= post.title %></a></p> -->
+              <%- include('includes/post-item', {post: post}) %>
+            </li>
+          <% } %>
+        </ul>
+    </form>
+    </main> 
+  </body>
+</html>
