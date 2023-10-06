@@ -1,0 +1,40 @@
+
+<ul>
+    <% if (!locals.isAdmin) { %>
+    <li>
+        <a href="/">상품</a>
+    </li>
+    <li>
+        <a href="/cart">카트</a>
+    </li>
+    <% } %>
+    
+    <% if (locals.isAuth && !locals.isAdmin) { %>
+    <li>
+        <a href="/orders">주문</a>
+    </li>
+    <% } %>
+
+    <% if (locals.isAdmin) { %>
+        <a href="/admin/products">상품 관리</a>
+        <a href="/admin/orders">주문 관리</a>
+    <% } %>
+
+    <% if (!(locals.isAuth)) { %>
+        <li>
+            <a href="/signup">회원가입</a>
+        </li>
+        <li>
+            <a href="/login">로그인</a>
+        </li>
+    <% } %>
+
+    <% if (locals.isAuth) { %>
+        <li>
+            <form action="/logout" method="POST">
+                <button class>로그아웃</button>
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken%>">
+            </form>
+        </li>
+    <% } %>
+</ul>

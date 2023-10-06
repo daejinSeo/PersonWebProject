@@ -50,35 +50,44 @@ router.get('/posts/:id', async function(req, res){
   // console.log(posts);
   // res.render('post-detail', {post: posts});
 
-  const postId = req.params.id;
-  const post = await db.getDb().collection('posts').findOne({_id: new ObjectId(postId)}, {summary: 0});
-
-  if(!post){
+  try{
+    const postId = req.params.id;
+    const post = await db.getDb().collection('posts').findOne({_id: new ObjectId(postId)}, {summary: 0});
+  
+    if(!post){
+      return res.status(404).render('404');
+    }
+    // console.log(post);
+  
+    post.humanReadableDate = post.date.toLocaleDateString('ko-KR', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    post.date =post.date.toISOString();
+    res.render('post-detail', {post: post});
+  }
+  catch(error){
     return res.status(404).render('404');
   }
-  // console.log(post);
 
-  post.humanReadableDate = post.date.toLocaleDateString('ko-KR', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-  post.date =post.date.toISOString();
-  res.render('post-detail', {post: post});
 
 });
 
 router.get('/update-post/:id', async function(req, res){
-
-  const updatePostId = req.params.id;
-  const post = await db.getDb().collection('posts').findOne({_id: new ObjectId(updatePostId)}, {_id: 1, title:1, summary: 1, body: 1, content: 1});
-
-  if(!post){
+  try{
+    const updatePostId = req.params.id;
+    const post = await db.getDb().collection('posts').findOne({_id: new ObjectId(updatePostId)}, {_id: 1, title:1, summary: 1, body: 1, content: 1});
+    if(!post){
+      return res.status(404).render('404');
+    }
+    
+    res.render('update-post', {post: post});
+  }
+  catch(error){
     return res.status(404).render('404');
   }
-  
-  res.render('update-post', {post: post});
 });
 
 
