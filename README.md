@@ -1,4 +1,4 @@
-# Personal Web Proejct
+# Personal Web Project
 
 **Tech**
 
