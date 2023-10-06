@@ -36,7 +36,7 @@ Javascript
 Node.JS
 
 
-**Near future Skill up Tech(Except career skill)**
+**Future Skill up Tech(Except career skill)**
 ---------------------------------------
 [ View Framework ]
 React, Vue
