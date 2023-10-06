@@ -22,7 +22,7 @@ MongoDB
 
 
 
-**Personal Tech Study(Except career skill)**
+**Personal Skill up Tech(Except career skill)**
 ---------------------------------------
 ↓↓↓ Web branch ↓↓↓
 
@@ -36,7 +36,7 @@ Javascript
 Node.JS
 
 
-**Near future Tech Study(Except career skill)**
+**Near future Skill up Tech(Except career skill)**
 ---------------------------------------
 [ View Framework ]
 React, Vue
