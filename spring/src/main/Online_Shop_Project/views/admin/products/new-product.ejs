@@ -1,0 +1,38 @@
+<%- include('../../customer/includes/head', {pageTitle: '관리자 모드 상품 업로드'}) %>
+    <link rel="stylesheet" href="/styles/forms.css">
+</head>
+<body>
+    <%- include('../../customer/includes/header') %> 
+    <main>
+        <h1>신규 상품 추가</h1>  
+        <form action="/admin/products?_csrf=<%=locals.csrfToken %>" method="POST" enctype="multipart/form-data"> 
+            
+            <div>
+                <label for="title">상품명</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="image">이미지</label>
+                <input type="file" id="image" name="image" accept="image/png, image/jpg">
+            </div>
+            <div>
+                <label for="summary">간략한 설명</label>
+                <input type="text" id="summary" name="summary" required maxlength="250">
+            </div>
+            <div>
+                <label for="price">가격</label>
+                <input type="number" id="price" name="price" min="10" step="10" required>
+            </div>
+            <div>
+                <label for="description">자세한 설명</label>
+                <textarea id="description" name="description" rows="7" required></textarea>
+            </div>
+            <div>
+                <button type="reset" class="btn btn-alt">초기화</button>
+                <button class="btn">저장</button>
+            </div>
+        </form>
+        
+    </main>
+</body>
+<%- include('../../customer/includes/footer') %>

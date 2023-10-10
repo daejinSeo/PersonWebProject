@@ -6,6 +6,7 @@ const expressSession = require('express-session');
 const mongodbSession = require('connect-mongodb-session');
 
 const authRoutes = require('./routes/auth.routes');
+const adminRoutes = require('./routes/admin.routes');
 // const createSessionConfig = require('./config/session');
 const productRoutes = require('./routes/products.routes');
 const baseRoutes = require('./routes/base.routes');
@@ -56,13 +57,14 @@ app.use(checkAuthStatusMiddleware);
 app.use(authRoutes);
 app.use(productRoutes);
 app.use(baseRoutes);
+app.use('/admin', adminRoutes);
 
 app.use(errorHandlerMiddleware);
 
 
 database.connectToDatabase()
 .then(function() {
-    app.listen(3000);
+    app.listen(3100);
 })
 .catch(function(error){
     console.log('DB 연결 실패!');
